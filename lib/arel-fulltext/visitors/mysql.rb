@@ -8,10 +8,10 @@ module Arel
         collector << ') AGAINST('
         collector << quote(o.right)
 
-        opts = ''
+        opts = ' IN BOOLEAN MODE'
         unless o.opts.nil?
-          if o.opts[:boolean_mode]
-            opts = ' IN BOOLEAN MODE'
+          if o.opts[:native_mode]
+            opts = ''
           elsif o.opts[:query_expansion]
             opts = ' WITH QUERY EXPANSION'
           end
